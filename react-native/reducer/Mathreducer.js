@@ -4,6 +4,7 @@
 
 import  * as Type from'../type/MathType';
 
+//初始化
 const initState = {
     result: 0
 };

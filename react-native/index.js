@@ -19,6 +19,8 @@ export default class App extends React.PureComponent {
         }
     }
 
+    //前面一些只是对象，方法相关的操作，肉眼可以识别，Provider是让我们决定使用redux的一个原因，它可以让我们操作容器内的组件却不需要手动传递内容
+    //想想复杂应用来一个 4层以上的json要你你自己操作的话的工作量吧
     render() {
         return (
             <Provider store={this.state.store}>

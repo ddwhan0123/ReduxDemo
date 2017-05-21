@@ -3,16 +3,14 @@
  */
 import React from'react';
 
+
 import {connect} from 'react-redux';
+//加减的两种action
 import {add, minus} from './action/MathAction';
 
 import {
-    AppRegistry,
-    StyleSheet,
     Text,
     View,
-    Image,
-    Platform,
     TouchableHighlight,
 } from 'react-native';
 
@@ -20,7 +18,8 @@ class Main extends React.Component {
     constructor(props) {
         super(props);
         this.addPress = this.addPress.bind(this);
-        this.minuPress = this.minuPress.bind(this);
+        this.minusPress = this.minusPress.bind(this);
+        //初始值，也可以是外部传入
         this.state = {
             intvalue: 100,
         }
@@ -31,11 +30,13 @@ class Main extends React.Component {
         this.props.dispatch(add(this.state.intvalue));
     }
 
-    minuPress() {
+    minusPress() {
         console.log('---> Main minuPress');
+        //dispatch(action) 方法更新 state
         this.props.dispatch(minus(this.state.intvalue));
     }
 
+    //状态变化时会被调用
     shouldComponentUpdate(nextProps, nextState) {
         console.log('---> Main shouldComponentUpdate');
         if (nextProps.result !== this.props.result) {
@@ -54,7 +55,7 @@ class Main extends React.Component {
                         按我会加
                     </Text>
                 </TouchableHighlight>
-                <TouchableHighlight style={{marginTop: 30}} onPress={this.minuPress}>
+                <TouchableHighlight style={{marginTop: 30}} onPress={this.minusPress}>
                     <Text style={{fontSize: 15}}>
                         按我会减
                     </Text>
@@ -70,5 +71,5 @@ function select(store) {
         result: store.mathStore.result,
     }
 }
-
+//connect方法建立数据与状态的关系，达到刷新ui的效果
 export  default  connect(select)(Main);
