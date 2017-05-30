@@ -15,7 +15,7 @@ export default function mathReducer(state = initState, action = {}) {
             console.log('---> mathReducer action.type ' + action.type);
             return {
                 ...state,
-                result: action.result,
+                result: action.result+10,
             };
             break;
         case Type.MINUS_TYPE:
