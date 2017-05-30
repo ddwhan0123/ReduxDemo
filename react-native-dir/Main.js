@@ -15,15 +15,31 @@ import {
     TouchableHighlight,
 } from 'react-native';
 
+let a = {
+    showText: {
+        data: 'hahah',
+        count: 1024,
+    }
+};
 class Main extends React.Component {
     constructor(props) {
         super(props);
         this.addPress = this.addPress.bind(this);
         this.minusPress = this.minusPress.bind(this);
+        this.showRefresh = this.showRefresh.bind(this);
         //初始值，也可以是外部传入
         this.state = {
             intvalue: 100,
+            showText: {
+                data: '按我啊',
+                count: 1024,
+            },
         }
+    }
+
+    showRefresh() {
+        console.log('---> Main showRefresh');
+        this.setState(a);
     }
 
     addPress() {
@@ -40,14 +56,17 @@ class Main extends React.Component {
     //状态变化时会被调用
     shouldComponentUpdate(nextProps, nextState) {
         console.log('---> Main shouldComponentUpdate');
-        if (Immutable.is(this.props, nextProps)) {
+        if (nextProps.result !== this.props.result) {
             this.state.intvalue = nextProps.result;
             console.log('---> Main shouldComponentUpdate this.state.intvalue true ' + this.state.intvalue);
             return true;
-        } else {
-            console.log('---> Main shouldComponentUpdate this.state.intvalue false ' + this.state.intvalue);
-            return false;
         }
+        if (!(this.state.showText === nextState.showText || Immutable.is(this.state.showText, nextState.showText))) {
+            console.log('---> Main shouldComponentUpdate this.state.showText true ' + this.state.showText.data);
+            console.log('---> Main shouldComponentUpdate nextState.showText true ' + nextState.showText.data);
+            return true;
+        }
+        return false;
     }
 
     render() {
@@ -65,6 +84,11 @@ class Main extends React.Component {
                     </Text>
                 </TouchableHighlight>
                 <Text style={{marginTop: 30, color: '#ffaa11'}}>{this.state.intvalue}</Text>
+                <TouchableHighlight style={{marginTop: 30}} onPress={this.showRefresh}>
+                    <Text style={{fontSize: 15}}>
+                        {this.state.showText.data}
+                    </Text>
+                </TouchableHighlight>
             </View>
         )
     }
