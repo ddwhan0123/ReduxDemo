@@ -94,21 +94,13 @@ class Main extends React.Component {
     }
 }
 
-function
-
-select(store) {
+function select(store) {
     return {
         result: store.mathStore.result,
     }
 }
 
 //connect方法建立数据与状态的关系，达到刷新ui的效果
-export
-default
-
-connect(select)
-
-(
+export default connect(select)(
     Main
-)
-;
+);
