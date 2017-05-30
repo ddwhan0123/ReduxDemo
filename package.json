@@ -17,7 +17,8 @@
     "babel-preset-react-native": "1.9.1",
     "jest": "20.0.0",
     "react-test-renderer": "16.0.0-alpha.6",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "immutable":"4.0.0-rc.2"
   },
   "jest": {
     "preset": "react-native"

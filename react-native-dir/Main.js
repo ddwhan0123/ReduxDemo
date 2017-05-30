@@ -7,6 +7,7 @@ import React from'react';
 import {connect} from 'react-redux';
 //加减的两种action
 import {add, minus} from './action/MathAction';
+import Immutable from 'immutable';
 
 import {
     Text,
@@ -39,10 +40,13 @@ class Main extends React.Component {
     //状态变化时会被调用
     shouldComponentUpdate(nextProps, nextState) {
         console.log('---> Main shouldComponentUpdate');
-        if (nextProps.result !== this.props.result) {
+        if (Immutable.is(this.props, nextProps)) {
             this.state.intvalue = nextProps.result;
-            console.log('---> Main shouldComponentUpdate this.state.intvalue ' + this.state.intvalue);
+            console.log('---> Main shouldComponentUpdate this.state.intvalue true ' + this.state.intvalue);
             return true;
+        } else {
+            console.log('---> Main shouldComponentUpdate this.state.intvalue false ' + this.state.intvalue);
+            return false;
         }
     }
 
@@ -66,10 +70,21 @@ class Main extends React.Component {
     }
 }
 
-function select(store) {
+function
+
+select(store) {
     return {
         result: store.mathStore.result,
     }
 }
+
 //connect方法建立数据与状态的关系，达到刷新ui的效果
-export  default  connect(select)(Main);
+export
+default
+
+connect(select)
+
+(
+    Main
+)
+;

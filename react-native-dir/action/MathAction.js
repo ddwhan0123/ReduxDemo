@@ -12,7 +12,7 @@ export function add(intvalue) {
         type: types.ADD_TYPE,
         result: intvalue,
     }
-};
+}
 
 export function minus(intvalue) {
     console.log('---> MainAction minus intvalue ' + intvalue);
@@ -20,4 +20,4 @@ export function minus(intvalue) {
         type: types.MINUS_TYPE,
         result: intvalue,
     }
-};
+}

@@ -6,7 +6,7 @@ import {
     View
 } from 'react-native';
 
-import App from'./react-native/index';
+import App from'./react-native-dir/index';
 
 export default class Reduxdemo extends Component {
     render() {
