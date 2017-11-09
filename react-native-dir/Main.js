@@ -1,13 +1,15 @@
 /**
  * Created by jiajiewang on 2017/5/19.
  */
-import React from'react';
+import React from 'react';
 
 
 import {connect} from 'react-redux';
 //加减的两种action
 import {add, minus} from './action/MathAction';
 import Immutable from 'immutable';
+
+import SonComponent from './ui/components/son.component'
 
 import {
     Text,
@@ -21,9 +23,11 @@ let a = {
         count: 1024,
     }
 };
+
 class Main extends React.Component {
     constructor(props) {
         super(props);
+        console.log('---> Main constructor');
         this.addPress = this.addPress.bind(this);
         this.minusPress = this.minusPress.bind(this);
         this.showRefresh = this.showRefresh.bind(this);
@@ -51,6 +55,18 @@ class Main extends React.Component {
         console.log('---> Main minuPress');
         //dispatch(action) 方法更新 state
         this.props.dispatch(minus(this.state.intvalue));
+    }
+
+    componentWillMount() {
+        console.log('---> Main componentWillMount');
+    }
+
+    componentDidMount() {
+        console.log('---> Main componentDidMount');
+    }
+
+    componentWillUnmount() {
+        console.log('---> Main componentWillUnmount');
     }
 
     //状态变化时会被调用
@@ -89,6 +105,7 @@ class Main extends React.Component {
                         {this.state.showText.data}
                     </Text>
                 </TouchableHighlight>
+                <SonComponent sonValue={this.state.showText.data + this.state.intvalue}/>
             </View>
         )
     }
