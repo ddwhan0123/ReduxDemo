@@ -19,7 +19,7 @@ export default class SonComponent extends React.PureComponent {
 
     componentWillReceiveProps(nextProps) {
         console.log('---> SonComponent componentWillReceiveProps');
-        console.log('---> SonComponent shouldComponentUpdate nextProps ' + nextProps.sonValue)
+        console.log('---> SonComponent componentWillReceiveProps nextProps ' + nextProps.sonValue)
     }
 
     componentDidMount() {

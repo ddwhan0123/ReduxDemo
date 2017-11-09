@@ -69,6 +69,11 @@ class Main extends React.Component {
         console.log('---> Main componentWillUnmount');
     }
 
+    componentWillReceiveProps(nextProps) {
+        console.log('---> Main componentWillReceiveProps');
+        console.log('---> Main componentWillReceiveProps nextProps ' + nextProps.result)
+    }
+
     //状态变化时会被调用
     shouldComponentUpdate(nextProps, nextState) {
         console.log('---> Main shouldComponentUpdate');
